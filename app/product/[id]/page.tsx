@@ -16,6 +16,7 @@ export default function ProductPage() {
   const addToCart = useCartStore((state) => state.addToCart);
   
   const [quantity, setQuantity] = useState(1);
+  const [isAdded, setIsAdded] = useState(false);
 
   if (!product) {
     notFound();
@@ -35,6 +36,7 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
+    setIsAdded(true);
   };
 
   return (
@@ -118,13 +120,23 @@ export default function ProductPage() {
                   </button>
                 </div>
               </div>
-              <button
-                onClick={handleAddToCart}
-                className="flex flex-1 items-center justify-center gap-2 rounded-md bg-primary h-10 px-8 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
-              >
-                <ShoppingCart className="h-4 w-4" />
-                Add to Cart
-              </button>
+              {isAdded ? (
+                <Link
+                  href="/cart"
+                  className="flex flex-1 items-center justify-center gap-2 rounded-md bg-green-600 h-10 px-8 py-2 text-sm font-medium text-white shadow transition-colors hover:bg-green-700"
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  View Cart
+                </Link>
+              ) : (
+                <button
+                  onClick={handleAddToCart}
+                  className="flex flex-1 items-center justify-center gap-2 rounded-md bg-primary h-10 px-8 py-2 text-sm font-medium text-primary-foreground shadow transition-colors hover:bg-primary/90 focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring disabled:pointer-events-none disabled:opacity-50"
+                >
+                  <ShoppingCart className="h-4 w-4" />
+                  Add to Cart
+                </button>
+              )}
             </div>
           </div>
         </div>

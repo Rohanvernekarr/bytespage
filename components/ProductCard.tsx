@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import Link from "next/link";
+import { useState } from "react";
 import { Product } from "@/types";
 import { useCartStore } from "@/store/useCartStore";
 import { Star } from "lucide-react";
@@ -12,6 +13,13 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const addToCart = useCartStore((state) => state.addToCart);
+  const [isAdded, setIsAdded] = useState(false);
+
+  const handleAddToCart = (e: React.MouseEvent) => {
+    e.preventDefault();
+    addToCart(product);
+    setIsAdded(true);
+  };
 
   return (
     <div className="group relative flex flex-col overflow-hidden rounded-lg border border-border bg-card transition-all hover:shadow-lg">
@@ -41,12 +49,21 @@ export function ProductCard({ product }: ProductCardProps) {
 
         <div className="mt-auto flex items-center justify-between gap-4">
           <span className="text-xl font-bold text-primary">${product.price}</span>
-          <button
-            onClick={() => addToCart(product)}
-            className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
-          >
-            Add to Cart
-          </button>
+          {isAdded ? (
+            <Link
+              href="/cart"
+              className="rounded-full bg-green-600 px-4 py-2 text-sm font-medium text-white transition-colors hover:bg-green-700"
+            >
+              View Cart
+            </Link>
+          ) : (
+            <button
+              onClick={handleAddToCart}
+              className="rounded-full bg-primary px-4 py-2 text-sm font-medium text-primary-foreground transition-colors hover:bg-primary/90 focus:outline-none focus:ring-2 focus:ring-primary focus:ring-offset-2"
+            >
+              Add to Cart
+            </button>
+          )}
         </div>
       </div>
     </div>
