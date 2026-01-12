@@ -14,9 +14,10 @@ export default function ProductPage() {
   const id = params.id as string;
   const product = products.find((p) => p.id === id);
   const addToCart = useCartStore((state) => state.addToCart);
+  const items = useCartStore((state) => state.items);
   
   const [quantity, setQuantity] = useState(1);
-  const [isAdded, setIsAdded] = useState(false);
+  const isAdded = items.some((item) => item.id === product?.id);
 
   if (!product) {
     notFound();
@@ -36,7 +37,6 @@ export default function ProductPage() {
 
   const handleAddToCart = () => {
     addToCart(product, quantity);
-    setIsAdded(true);
   };
 
   return (

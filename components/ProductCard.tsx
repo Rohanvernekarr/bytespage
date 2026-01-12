@@ -2,7 +2,6 @@
 
 import Image from "next/image";
 import Link from "next/link";
-import { useState } from "react";
 import { Product } from "@/types";
 import { useCartStore } from "@/store/useCartStore";
 import { Star } from "lucide-react";
@@ -13,12 +12,13 @@ interface ProductCardProps {
 
 export function ProductCard({ product }: ProductCardProps) {
   const addToCart = useCartStore((state) => state.addToCart);
-  const [isAdded, setIsAdded] = useState(false);
+  const items = useCartStore((state) => state.items);
+  
+  const isAdded = items.some((item) => item.id === product.id);
 
   const handleAddToCart = (e: React.MouseEvent) => {
     e.preventDefault();
     addToCart(product);
-    setIsAdded(true);
   };
 
   return (
