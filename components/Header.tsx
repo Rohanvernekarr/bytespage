@@ -30,10 +30,10 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-white dark:bg-black text-foreground shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-primary dark:bg-black text-foreground shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 font-bold text-2xl">
-          <span className="text-primary">Logo</span>
+          <span className="text-white">Logo</span>
         </Link>
 
         <div className="hidden flex-1 items-center justify-center px-6 md:flex">
@@ -53,26 +53,26 @@ export function Header() {
           {mounted && (
             <button
               onClick={() => setTheme(theme === "dark" ? "light" : "dark")}
-              className="p-2 hover:bg-muted rounded-full transition-colors"
+              className="p-2 cursor-pointer rounded-full transition-colors"
               aria-label="Toggle theme"
             >
               {theme === "dark" ? (
-                <Sun className="h-6 w-6 text-foreground" />
+                <Sun className="h-5 w-5 text-white" />
               ) : (
-                <Moon className="h-6 w-6 text-foreground" />
+                <Moon className="h-5 w-5 text-white" />
               )}
             </button>
           )}
-          <Link href="/cart" className="group relative p-2 hover:bg-muted rounded-full transition-colors">
-            <ShoppingCart className="h-6 w-6 text-foreground" />
+          <Link href="/cart" className="group relative p-2 cursor-pointer rounded-full transition-colors">
+            <ShoppingCart className="h-6 w-6 text-white" />
             {mounted && totalItems > 0 && (
               <span className="absolute -top-0.5 -right-0.5 flex h-4 w-4 items-center justify-center rounded-full bg-red-500 text-[10px] font-bold text-white shadow-sm group-hover:scale-110 transition-transform">
                 {totalItems}
               </span>
             )}
           </Link>
-          <button className="p-2 hover:bg-muted rounded-full transition-colors">
-            <User className="h-6 w-6 text-foreground" />
+          <button className="p-2 cursor-pointer rounded-full transition-colors">
+            <User className="h-6 w-6 text-white" />
           </button>
         </div>
       </div>
