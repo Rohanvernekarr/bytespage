@@ -46,9 +46,9 @@ export function Sidebar() {
   const categories: Category[] = ["All", "Electronics", "Clothing", "Home", "Accessories"];
 
   return (
-    <aside className="w-full space-y-8 rounded-lg border border-border bg-card p-6 md:w-64 md:shrink-0 h-fit">
+    <aside className="w-full space-y-8 rounded-lg border border-border bg-primary p-6 md:w-64 md:shrink-0 h-fit">
       <div>
-        <h3 className="mb-4 text-lg font-semibold text-foreground">Category</h3>
+        <h3 className="mb-4 text-lg font-semibold text-white">Category</h3>
         <div className="space-y-3">
           {categories.map((category) => (
             <div key={category} className="flex items-center gap-2">
@@ -59,7 +59,7 @@ export function Sidebar() {
                  {currentCategory === category && <div className="h-2 w-2 rounded-full bg-white" />}
               </div>
               <label
-                className="cursor-pointer text-sm font-medium text-foreground hover:text-primary"
+                className="cursor-pointer text-sm font-medium text-white hover:text-gray-300"
                 onClick={() => handleCategoryChange(category)}
               >
                 {category}
@@ -70,7 +70,7 @@ export function Sidebar() {
       </div>
 
       <div>
-        <h3 className="mb-4 text-lg font-semibold text-foreground">Price</h3>
+        <h3 className="mb-4 text-lg font-semibold text-white">Price</h3>
         <div className="space-y-4">
           <input
             type="range"
@@ -81,9 +81,9 @@ export function Sidebar() {
             onChange={handlePriceChange}
             onMouseUp={handlePriceCommit}
             onTouchEnd={handlePriceCommit}
-            className="w-full accent-primary cursor-pointer"
+            className="w-full accent-white cursor-pointer"
           />
-          <div className="flex items-center justify-between text-sm text-muted-foreground">
+          <div className="flex items-center justify-between text-sm text-white">
             <span>$0</span>
             <span>${priceMax}</span>
           </div>

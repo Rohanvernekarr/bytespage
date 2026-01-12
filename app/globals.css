@@ -5,7 +5,7 @@
 :root {
   --background: #ffffff;
   --foreground: #171717;
-  --primary: #3d7ee7;
+  --primary: #1c3864;
   /* Premium Blue */
   --primary-foreground: #ffffff;
   --muted: #f4f4f5;
@@ -16,7 +16,7 @@
 .dark {
   --background: #0a0a0a;
   --foreground: #ededed;
-  --primary: #3d7ee7;
+  --primary: #1c3864;
   --primary-foreground: #ffffff;
   --muted: #262626;
   --muted-foreground: #a3a3a3;

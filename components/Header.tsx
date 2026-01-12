@@ -30,7 +30,7 @@ export function Header() {
   };
 
   return (
-    <header className="sticky top-0 z-50 w-full border-b border-border bg-primary dark:bg-black text-foreground shadow-sm">
+    <header className="sticky top-0 z-50 w-full border-b border-border bg-primary text-foreground shadow-sm">
       <div className="container mx-auto flex h-16 items-center justify-between px-4 md:px-6">
         <Link href="/" className="flex items-center gap-2 font-bold text-2xl">
           <span className="text-white">Logo</span>
