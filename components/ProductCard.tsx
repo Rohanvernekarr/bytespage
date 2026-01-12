@@ -48,7 +48,7 @@ export function ProductCard({ product }: ProductCardProps) {
         </div>
 
         <div className="mt-auto flex items-center justify-between gap-4">
-          <span className="text-xl font-bold text-primary">${product.price}</span>
+          <span className="text-xl font-bold text-primary dark:text-white">${product.price}</span>
           {isAdded ? (
             <Link
               href="/cart"

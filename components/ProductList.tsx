@@ -2,6 +2,7 @@
 
 import { useSearchParams } from "next/navigation";
 import { ProductCard } from "@/components/ProductCard";
+import { FeaturedProductCard } from "@/components/FeaturedProductCard";
 import { products } from "@/lib/data"; 
 import { useMemo } from "react";
 
@@ -45,6 +46,11 @@ export function ProductList() {
       {filteredProducts.map((product) => (
         <ProductCard key={product.id} product={product} />
       ))}
+      <div className="col-span-1 md:col-span-2 lg:col-span-3">
+        {products.find(p => p.id === "7") && (
+             <FeaturedProductCard product={products.find(p => p.id === "7")!} />
+        )}
+      </div>
     </div>
   );
 }
