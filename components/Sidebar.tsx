@@ -28,7 +28,7 @@ export function Sidebar() {
       }
       return params.toString();
     },
-    [searchParams]
+    [searchParams],
   );
 
   const handleCategoryChange = (category: string) => {
@@ -40,10 +40,18 @@ export function Sidebar() {
   };
 
   const handlePriceCommit = () => {
-      router.push(pathname + "?" + createQueryString("maxPrice", priceMax.toString()));
+    router.push(
+      pathname + "?" + createQueryString("maxPrice", priceMax.toString()),
+    );
   };
 
-  const categories: Category[] = ["All", "Electronics", "Clothing", "Home", "Accessories"];
+  const categories: Category[] = [
+    "All",
+    "Electronics",
+    "Clothing",
+    "Home",
+    "Accessories",
+  ];
 
   return (
     <aside className="w-full space-y-8 rounded-lg border border-border bg-primary p-6 md:w-64 md:shrink-0 h-fit">
@@ -52,11 +60,13 @@ export function Sidebar() {
         <div className="space-y-3">
           {categories.map((category) => (
             <div key={category} className="flex items-center gap-2">
-              <div 
-                className={`h-4 w-4 rounded-full border border-primary flex items-center justify-center cursor-pointer ${currentCategory === category ? 'bg-primary' : 'bg-transparent'}`}
+              <div
+                className={`h-4 w-4 rounded-full border border-primary flex items-center justify-center cursor-pointer ${currentCategory === category ? "bg-primary" : "bg-transparent"}`}
                 onClick={() => handleCategoryChange(category)}
               >
-                 {currentCategory === category && <div className="h-2 w-2 rounded-full bg-white" />}
+                {currentCategory === category && (
+                  <div className="h-2 w-2 rounded-full bg-white" />
+                )}
               </div>
               <label
                 className="cursor-pointer text-sm font-medium text-white hover:text-gray-300"
