@@ -32,16 +32,18 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased min-h-screen flex flex-col`}
       >
         <ThemeProvider
-            attribute="class"
-            defaultTheme="system"
-            enableSystem
-            disableTransitionOnChange
-          >
-            <Suspense fallback={<div className="h-16 w-full bg-primary" />}>
-              <Header />
-            </Suspense>
-            <main className="flex-1">{children}</main>
+          attribute="class"
+          defaultTheme="system"
+          enableSystem
+          disableTransitionOnChange
+        >
+          <Suspense fallback={<div className="h-16 w-full bg-primary" />}>
+            <Header />
+          </Suspense>
+          <main className="flex-1">{children}</main>
+          <Suspense>
             <Footer />
+          </Suspense>
         </ThemeProvider>
       </body>
     </html>
